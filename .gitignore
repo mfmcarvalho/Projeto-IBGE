@@ -1,0 +1,30 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# VS Code
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Variáveis de ambiente / credenciais
+.env
+
+# Dados gerados pelo pipeline
+data/bronze/**/*.json
+data/silver/**/*.parquet
+data/gold/**/*.parquet
+
+# Arquivos temporários
+*.tmp
+.DS_Store
+Thumbs.db
+
+# SQLTools / sessões locais
+*.session.sql
+
+# Arquivos SQL temporários
+*.pgsql
