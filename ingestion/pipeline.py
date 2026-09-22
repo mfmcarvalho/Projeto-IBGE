@@ -119,6 +119,10 @@ def executar_script(nome, caminho_script):
 # PIPELINE
 # ============================================================
 
+# ============================================================
+# PIPELINE
+# ============================================================
+
 def executar_pipeline():
     inicio_pipeline = time.time()
 
@@ -148,13 +152,28 @@ def executar_pipeline():
         )
 
         # ----------------------------------------------------
+        # GOLD
+        # ----------------------------------------------------
+
+        executar_script(
+            "GOLD",
+            SCRIPT_GOLD
+        )
+
+        # ----------------------------------------------------
         # SUCESSO
         # ----------------------------------------------------
 
         tempo_total = time.time() - inicio_pipeline
 
+        logger.info("")
         logger.info("=" * 70)
         logger.info("PIPELINE IBGE - CONCLUÍDO COM SUCESSO")
+        logger.info("=" * 70)
+        logger.info("Etapas executadas:")
+        logger.info("  BRONZE -> OK")
+        logger.info("  SILVER -> OK")
+        logger.info("  GOLD   -> OK")
         logger.info(
             "Tempo total: %.2f segundos",
             tempo_total
@@ -167,6 +186,7 @@ def executar_pipeline():
 
         tempo_total = time.time() - inicio_pipeline
 
+        logger.warning("")
         logger.warning("=" * 70)
         logger.warning("PIPELINE IBGE - INTERROMPIDO PELO USUÁRIO")
         logger.warning(
@@ -181,7 +201,7 @@ def executar_pipeline():
 
         tempo_total = time.time() - inicio_pipeline
 
-        logger.exception("")
+        logger.exception("Erro durante a execução do pipeline.")
 
         logger.error("=" * 70)
         logger.error("PIPELINE IBGE - FALHOU")
